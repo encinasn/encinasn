@@ -17,7 +17,7 @@ export default function AboutDialog() {
         delay={0.6}
           className={cn(
             "overflow-hidden rounded-lg bg-secondary p-4 text-white shadow md:rounded-xl md:p-8 lg:p-10",
-            "cursor-pointer text-primary z-10"
+            "cursor-pointer text-primary"
           )}
           layoutId="about"
         >

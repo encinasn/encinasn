@@ -55,35 +55,43 @@ const DialogOverlay = React.forwardRef<
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, title, layoutId, children, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay title={title} />
-    <DialogPrimitive.Content forceMount asChild ref={ref} {...props}>
-      <motion.div
-        layoutId={layoutId}
-        className={cn(
-          "z-50 w-full overflow-hidden rounded-lg bg-secondary lg:mt-20",
-          className
-        )}
-      >
-        <motion.div
-          className="grid"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { delay: 0.2 } }}
-        >
-          {children}
+interface DialogProps
+  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
+  layoutId?: string;
+}
+interface DialogWithRefProps
+  extends React.ElementRef<typeof DialogPrimitive.Content> {
+  layoutId?: string;
+}
 
-          <DialogPrimitive.Close className="flex items-center justify-center p-6 font-medium opacity-70 transition-opacity focus-within:bg-white/5 focus-within:outline-none hover:opacity-100 disabled:pointer-events-none">
-            Close
-          </DialogPrimitive.Close>
+const DialogContent = React.forwardRef<DialogWithRefProps, DialogProps>(
+  ({ className, title, layoutId, children, ...props }, ref) => (
+    <DialogPortal>
+      <DialogOverlay title={title} />
+      <DialogPrimitive.Content forceMount asChild ref={ref} {...props}>
+        <motion.div
+          layoutId={layoutId}
+          className={cn(
+            "z-50 w-full overflow-hidden rounded-lg bg-secondary lg:mt-20",
+            className
+          )}
+        >
+          <motion.div
+            className="grid"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.2 } }}
+          >
+            {children}
+
+            <DialogPrimitive.Close className="flex items-center justify-center p-6 font-medium opacity-70 transition-opacity focus-within:bg-white/5 focus-within:outline-none hover:opacity-100 disabled:pointer-events-none">
+              Close
+            </DialogPrimitive.Close>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </DialogPrimitive.Content>
-  </DialogPortal>
-));
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  )
+);
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 export { Dialog, DialogTrigger, DialogContent };

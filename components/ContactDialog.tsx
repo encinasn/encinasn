@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import { Text } from "@/components/ui/text";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import { Text } from "@/components/ui/text";
 import { Card } from "./ui/card";
+import { cn } from "@/lib/utils";
+import { LINKS } from "./social-links";
+import { ArrowUpRight } from "./icons/ArrowUpRight";
 
 export default function ContactDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +22,7 @@ export default function ContactDialog() {
             "overflow-hidden rounded-lg bg-secondary p-4 text-white shadow md:rounded-xl md:p-8 lg:p-10",
             "cursor-pointer py-4 lg:py-8",
             "bg-primary text-secondary",
-            "flex items-center justify-center z-10"
+            "flex items-center justify-center"
           )}
         >
           <motion.div animate={{ opacity: isOpen ? 0 : 1 }}>
@@ -36,20 +38,24 @@ export default function ContactDialog() {
             layoutId="contact"
             className="bg-primary text-secondary sm:max-w-[425px]"
           >
-            <div className="p-7 md:p-8 lg:p-10">
-              <Text size="sm">
-                Hi there! I'm Nahuel, a designer turned Frontend developer from
-                Argentina.👋
-                <br />
-                <br /> I'm a creative thinker and problem solver who loves to
-                create UI designs that are both visually pleasing and
-                functionally sound.
-                <br />
-                <br />
-                I'm interested in ui, design systems, dev rel and user/dev
-                experience.
-              </Text>
-            </div>
+            <Text
+              as="div"
+              size="sm"
+              className="flex flex-col gap-4 p-7 md:p-8 lg:p-10"
+            >
+              {LINKS.map(({ title, url }) => (
+                <a
+                  key={title}
+                  target="_blank"
+                  href={url}
+                  className="group flex items-center justify-between overflow-hidden rounded-md bg-black/5 p-4 transition-colors hover:bg-secondary hover:text-white"
+                >
+                  <span>{title}</span>
+
+                  <ArrowUpRight className="opacity-0 transition-opacity group-hover:opacity-100 group-hover:animate-in group-hover:slide-in-from-bottom-10" />
+                </a>
+              ))}
+            </Text>
           </DialogContent>
         )}
       </AnimatePresence>

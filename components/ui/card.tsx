@@ -1,17 +1,18 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { ClassValue } from "clsx";
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-type CardProps = PropsWithChildren<{
+interface CardProps extends React.ComponentPropsWithoutRef<"a"> {
   as?: any;
   delay?: number;
   isHighlighted?: boolean;
   isCentered?: boolean;
-  className?: ClassValue;
-}>;
+  className?: string;
+  children?: React.ReactNode;
+  layoutId?: string;
+}
 
 export function Card({
   as = motion.div,

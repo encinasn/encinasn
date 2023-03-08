@@ -14,5 +14,8 @@ module.exports = {
       },
     },
   },
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   plugins: [require('prettier-plugin-tailwindcss'),require("tailwindcss-animate")],
 };

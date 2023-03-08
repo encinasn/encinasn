@@ -48,7 +48,7 @@ export default function Home() {
           <Card delay={0.4} className="p-0 md:p-0 lg:p-0">
             <picture className="aspect-square">
               <Image
-                src="/profile.png"
+                src="/profile.webp"
                 alt="profile"
                 width={384}
                 height={384}
@@ -93,7 +93,7 @@ export default function Home() {
             >
               <picture className="block w-full">
                 <Image
-                  src="/platzi-olimpiadas.png"
+                  src="/platzi-olimpiadas.webp"
                   alt="Pando logo"
                   width={374}
                   height={211}
