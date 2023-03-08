@@ -3,16 +3,19 @@
 import { cn } from "@/lib/utils";
 import { ClassValue } from "clsx";
 import React, { PropsWithChildren } from "react";
+import { motion } from "framer-motion";
 
 type CardProps = PropsWithChildren<{
   as?: any;
+  delay?: number;
   isHighlighted?: boolean;
   isCentered?: boolean;
   className?: ClassValue;
 }>;
 
 export function Card({
-  as = "div",
+  as = motion.div,
+  delay = 0,
   isHighlighted,
   isCentered,
   className,
@@ -28,6 +31,8 @@ export function Card({
         isCentered && "flex items-center justify-center",
         className
       ),
+      initial: { opacity: 0, y: 50 },
+      animate: { opacity: 1, y: 0, transition: { delay } },
       ...props,
     },
     children

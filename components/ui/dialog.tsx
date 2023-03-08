@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const Dialog = DialogPrimitive.Root;
@@ -27,21 +27,30 @@ const DialogOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, title, children, ...props }, ref) => (
   <DialogPrimitive.Overlay
+    forceMount
+    asChild
+    ref={ref}
     className={cn(
-      "fixed inset-0 z-50 flex items-center md:items-start justify-center bg-black/80 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out",
+      "fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm md:items-start",
       className
     )}
     {...props}
-    ref={ref}
   >
-    <DialogPrimitive.Title
-      className={cn(
-        "fixed -mt-96 md:mt-20 lg:mt-0 z-50 h-min w-screen text-center text-[7rem] font-semibold leading-none sm:text-[10rem] md:text-[14rem] lg:text-[20rem]",
-        "bg-gradient-to-b from-white to-white/0 bg-clip-text text-transparent"
-      )}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.4 } }}
+      exit={{ opacity: 0 }}
     >
-      {title}
-    </DialogPrimitive.Title>
+      <DialogPrimitive.Title
+        className={cn(
+          "fixed z-50 -mt-96 h-min w-screen text-center text-[7rem] font-semibold leading-none sm:text-[10rem] md:mt-20 md:text-[14rem] lg:mt-0 lg:text-[20rem]",
+          "bg-gradient-to-b from-white to-white/0 bg-clip-text text-transparent",
+          title === "Contact" && "text-[6rem] leading-none"
+        )}
+      >
+        {title}
+      </DialogPrimitive.Title>
+    </motion.div>
   </DialogPrimitive.Overlay>
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
@@ -49,22 +58,29 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, title, children, ...props }, ref) => (
+>(({ className, title, layoutId, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay title={title} />
-    <DialogPrimitive.Content
-      ref={ref}
-      className={cn(
-        "z-50 lg:mt-20 grid w-full overflow-hidden rounded-lg bg-secondary animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0",
-        className
-      )}
-      {...props}
-    >
-      {children}
+    <DialogPrimitive.Content forceMount asChild ref={ref} {...props}>
+      <motion.div
+        layoutId={layoutId}
+        className={cn(
+          "z-50 w-full overflow-hidden rounded-lg bg-secondary lg:mt-20",
+          className
+        )}
+      >
+        <motion.div
+          className="grid"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.2 } }}
+        >
+          {children}
 
-      <DialogPrimitive.Close className="flex items-center justify-center p-6 font-medium opacity-70 transition-opacity focus-within:bg-primary focus-within:text-secondary focus-within:outline-none hover:opacity-100 disabled:pointer-events-none lg:p-8">
-        Close
-      </DialogPrimitive.Close>
+          <DialogPrimitive.Close className="flex items-center justify-center p-6 font-medium opacity-70 transition-opacity focus-within:bg-white/5 focus-within:outline-none hover:opacity-100 disabled:pointer-events-none">
+            Close
+          </DialogPrimitive.Close>
+        </motion.div>
+      </motion.div>
     </DialogPrimitive.Content>
   </DialogPortal>
 ));

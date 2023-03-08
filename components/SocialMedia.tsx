@@ -4,7 +4,7 @@ export default function SocialMedia() {
   return (
     <Text as="div" size="sm" className="flex items-center justify-center gap-6">
       {LINKS.map(({ title, url }) => (
-        <a key={title} href={url}>
+        <a key={title} target="_blank" href={url}>
           {title}
         </a>
       ))}

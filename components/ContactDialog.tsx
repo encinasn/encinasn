@@ -8,24 +8,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Card } from "./ui/card";
 
-export default function AboutDialog() {
+export default function ContactDialog() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Card
-        delay={0.6}
+          delay={1}
+          layoutId="contact"
           className={cn(
             "overflow-hidden rounded-lg bg-secondary p-4 text-white shadow md:rounded-xl md:p-8 lg:p-10",
-            "cursor-pointer text-primary z-10"
+            "cursor-pointer py-4 lg:py-8",
+            "bg-primary text-secondary",
+            "flex items-center justify-center z-10"
           )}
-          layoutId="about"
         >
           <motion.div animate={{ opacity: isOpen ? 0 : 1 }}>
-            <Text size="sm">
-              A creative thinker and problem solver who loves to create UI
-              designs that are both visually pleasing and functionally sound.
-            </Text>
+            <Text>Contact me</Text>
           </motion.div>
         </Card>
       </DialogTrigger>
@@ -33,9 +32,9 @@ export default function AboutDialog() {
       <AnimatePresence>
         {isOpen && (
           <DialogContent
-            title="About"
-            layoutId="about"
-            className="sm:max-w-[425px]"
+            title="Contact"
+            layoutId="contact"
+            className="bg-primary text-secondary sm:max-w-[425px]"
           >
             <div className="p-7 md:p-8 lg:p-10">
               <Text size="sm">
