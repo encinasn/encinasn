@@ -7,6 +7,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Card } from "./ui/card";
+import { Plus } from "./icons/Plus";
 
 export default function AboutDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function AboutDialog() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Card
-        delay={0.6}
+          delay={0.6}
           className={cn(
             "overflow-hidden rounded-lg bg-secondary p-4 text-white shadow md:rounded-xl md:p-8 lg:p-10",
             "cursor-pointer text-primary"

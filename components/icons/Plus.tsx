@@ -11,7 +11,6 @@ export function Plus(props: React.ComponentPropsWithoutRef<"svg">) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-plus"
       {...props}
     >
       <path d="M12 5v14M5 12h14" />

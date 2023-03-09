@@ -45,7 +45,7 @@ const DialogOverlay = React.forwardRef<
         className={cn(
           "fixed z-50 -mt-96 h-min w-screen text-center text-[7rem] font-semibold leading-none sm:text-[10rem] md:mt-20 md:text-[14rem] lg:mt-0 lg:text-[20rem]",
           "bg-gradient-to-b from-white to-white/0 bg-clip-text text-transparent",
-          title === "Contact" && "text-[6rem] leading-none"
+          title === "Contact" && "mt-[-28rem] text-[6rem] leading-none"
         )}
       >
         {title}

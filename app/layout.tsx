@@ -12,7 +12,17 @@ const poppins = Poppins({
 export const metadata = {
   title: "Encinas Nahuel",
   description: "Frontend Developer",
-  keywords: ["frontend, developer, react, front"]
+  keywords: ["frontend, developer, react, front"],
+  themeColor: "#131313",
+  colorScheme: "dark",
+  creator: "Encinas Nahuel",
+  icons: {
+    icon: "/favicon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +32,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-[#131313] text-white font-sans", poppins.variable)}>
+      <body
+        className={cn("bg-[#131313] font-sans text-white", poppins.variable)}
+      >
         {children}
       </body>
     </html>

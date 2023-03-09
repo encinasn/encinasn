@@ -11,7 +11,6 @@ export function ArrowUpRight(props: React.ComponentPropsWithoutRef<"svg">) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-arrow-up-right"
       {...props}
     >
       <path d="M7 17 17 7M7 7h10v10" />

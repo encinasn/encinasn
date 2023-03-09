@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Text } from "@/components/ui/text";
 import ContactDialog from "@/components/ContactDialog";
+import Header from "@/components/Header";
 
 const pandoUrl = "https://www.pando.ar/";
 const pandoSignUp = "https://app.pando.ar/auth/signup/overview";
@@ -13,7 +14,9 @@ const platziUrl = "https://platzi.com/blog/olimpiadas-olympia-challenge/";
 export default function Home() {
   return (
     <>
-      <main className="flex flex-col items-center justify-center py-20">
+      <Header />
+      
+      <main className="flex flex-col items-center justify-center">
         <section className="grid w-full max-w-screen-md grid-cols-2 gap-3 px-5 lg:gap-5 lg:px-0">
           <div className="grid grid-rows-[auto_1fr] gap-3 lg:gap-5">
             <Card isCentered className="p-4 lg:p-8">
@@ -85,13 +88,8 @@ export default function Home() {
           </Card>
 
           <div className="col-span-2 grid grid-cols-2 gap-3 md:grid-flow-dense md:gap-5">
-            <Card
-              as="a"
-              target="_blank"
-              href={platziUrl}
-              className="col-span-2 flex aspect-video items-center justify-center bg-primary p-0 md:col-[2] md:p-0 lg:p-0"
-            >
-              <picture className="block w-full">
+            <Card className="col-span-2 flex aspect-video items-center justify-center bg-primary p-0 md:col-[2] md:p-0 lg:p-0">
+              <a target="_blank" href={platziUrl} className="block w-full">
                 <Image
                   src="/platzi-olimpiadas.webp"
                   alt="Pando logo"
@@ -100,7 +98,7 @@ export default function Home() {
                   className="h-auto w-full select-none object-cover"
                   draggable={false}
                 />
-              </picture>
+              </a>
             </Card>
 
             <Card className="col-span-2 h-full md:col-[1] lg:py-8">
@@ -119,22 +117,23 @@ export default function Home() {
             </Card>
           </div>
 
-          <Card
-            as="a"
-            target="_blank"
-            href={pandoUrl}
-            className="col-span-2 flex aspect-video items-center justify-center bg-primary p-0 md:col-auto md:p-0 lg:p-0"
-          >
-            <picture className="block w-52">
-              <Image
-                src="https://www.pando.ar/images/logo.png"
-                alt="Pando logo"
-                width={208}
-                height={45.5}
-                className="h-auto w-full select-none object-contain"
-                draggable={false}
-              />
-            </picture>
+          <Card className="col-span-2 aspect-video bg-primary p-0 md:col-auto md:p-0 lg:p-0">
+            <a
+              target="_blank"
+              href={pandoUrl}
+              className="flex h-full w-full items-center justify-center"
+            >
+              <picture className="block w-52">
+                <Image
+                  src="https://www.pando.ar/images/logo.png"
+                  alt="Pando logo"
+                  width={208}
+                  height={45.5}
+                  className="h-auto w-full select-none object-contain"
+                  draggable={false}
+                />
+              </picture>
+            </a>
           </Card>
 
           <Card className="col-span-2 h-full md:col-auto lg:py-8">
@@ -161,7 +160,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="flex h-[50vh] flex-col items-center justify-between py-20 text-center md:h-[60vh]">
+      <footer className="flex h-[50vh] flex-col items-center justify-between pb-12 pt-20 text-center md:h-[70vh] md:py-32 md:pb-20">
         <div>
           <Text as="h2" size="xl">{`Let's work together`}</Text>
           <Text size="lg" className="mt-6 md:mt-10">

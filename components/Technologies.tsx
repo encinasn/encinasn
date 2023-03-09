@@ -5,21 +5,25 @@ import Image from "next/image";
 export default function Technologies() {
   return (
     <div className="relative m-auto w-auto select-none overflow-hidden">
-      <div className="absolute top-0 left-0 z-10 h-full w-full bg-gradient-to-r from-secondary via-transparent to-secondary" />
+      <div className="absolute top-0 left-0 z-10 min-h-[24px] h-full w-full bg-gradient-to-r from-secondary via-transparent to-secondary" />
       <div
         className="animate flex"
-        style={{ width: `calc(9.375rem * ${TECHNOLOGIES.length})` }}
+        style={{ width: `calc(10rem * ${TECHNOLOGIES.length})` }}
       >
         {TECHNOLOGIES.map(({ title, img }) => (
-          <Image
+          <picture
             key={title}
-            src={img}
-            alt={title}
-            width={150}
-            height={24}
-            draggable={false}
-            className="h-6 w-[9.375rem] object-contain"
-          />
+            className="flex w-[10rem] items-center justify-center"
+          >
+            <Image
+              src={img}
+              alt={title}
+              width={150}
+              height={24}
+              draggable={false}
+              className="h-auto w-[5rem] lg:w-[7rem] object-contain"
+            />
+          </picture>
         ))}
       </div>
 
@@ -29,7 +33,7 @@ export default function Technologies() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-9.375rem * ${TECHNOLOGIES.length / 2}));
+            transform: translateX(calc(-10rem * ${TECHNOLOGIES.length / 2}));
           }
         }
         .animate {
