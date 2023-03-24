@@ -7,9 +7,9 @@ import { Text } from "@/components/ui/text";
 import ContactDialog from "@/components/ContactDialog";
 import Header from "@/components/Header";
 
-const pandoUrl = "https://www.pando.ar/";
-const pandoSignUp = "https://app.pando.ar/auth/signup/overview";
-const platziUrl = "https://platzi.com/blog/olimpiadas-olympia-challenge/";
+const PANDO_URL = "https://www.pando.ar/";
+const PANDO_SIGNUP = "https://app.pando.ar/auth/signup";
+const PLATZI_URL = "https://platzi.com/blog/olimpiadas-olympia-challenge/";
 
 export default function Home() {
   return (
@@ -89,7 +89,7 @@ export default function Home() {
 
           <div className="col-span-2 grid grid-cols-2 gap-3 md:grid-flow-dense md:gap-5">
             <Card className="col-span-2 flex aspect-video items-center justify-center bg-primary p-0 md:col-[2] md:p-0 lg:p-0">
-              <a target="_blank" href={platziUrl} className="block w-full">
+              <a target="_blank" href={PLATZI_URL} className="block w-full">
                 <Image
                   src="/platzi-olimpiadas.webp"
                   alt="Pando logo"
@@ -107,7 +107,7 @@ export default function Home() {
                 Olimpiadas by building a complete ecommerce platform in just 10
                 days.{" "}
                 <a
-                  href={platziUrl}
+                  href={PLATZI_URL}
                   target="_blank"
                   className="text-primary underline"
                 >
@@ -120,7 +120,7 @@ export default function Home() {
           <Card className="col-span-2 aspect-video bg-primary p-0 md:col-auto md:p-0 lg:p-0">
             <a
               target="_blank"
-              href={pandoUrl}
+              href={PANDO_URL}
               className="flex h-full w-full items-center justify-center"
             >
               <picture className="block w-52">
@@ -140,7 +140,7 @@ export default function Home() {
             <Text size="sm">
               {`I'm building `}
               <a
-                href={pandoUrl}
+                href={PANDO_URL}
                 target="_blank"
                 className="text-primary underline"
               >
@@ -149,7 +149,7 @@ export default function Home() {
               , a new way to manage your business, allowing small companies to
               have access to the latest technologies.{" "}
               <a
-                href={pandoSignUp}
+                href={PANDO_SIGNUP}
                 target="_blank"
                 className="text-primary underline"
               >
